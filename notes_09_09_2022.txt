@@ -1,0 +1,426 @@
+
+  String name="Danish";
+
+  name.length()=====>length of the string.
+
+  We have to put an iteration till we reach the end of the string.
+
+  In the iteration we can make use of charAt(pos) method which 
+  
+returns a character at the given position.
+
+public boolean validateName(String name){
+boolean valid=true;
+for(int i=0;i<name.length;i++)
+{
+  if(!((name.charAt(i)>='a' && name.charAt(i)<='z') || (name.charAt(i)>='A' && name.charAt(i)<='Z'))){
+   valid=false; 
+   break;
+  }
+}
+return valid;
+}
+
+------------------------------------------------------------------------------------------------
+
+public boolean validateMobileNumber(String number){
+boolean valid=true;
+for(int i=0;i<number.length;i++)
+{
+  if(!(name.charAt(i)>='0' && name.charAt(i)<='9')){
+   valid=false; 
+   break;
+  }
+}
+return valid;
+}
+-----------------------------------------------------------------------------------------------------
+static is a modifier or keyword which can be used with methods and variables.'
+static can used with class but the class should be inner class.
+  static class Demo{} =====> This kind of class declaration is not allowed
+  class Demo{   =======> This kind of class declaration is allowed where we are declaring one static                           class within another non static class.
+    static class Inner{
+    }
+  }
+static members can be access both with object and class name.
+It is suggested that we can access static members with class name as it is common for all the objects
+of a class.
+static method can access any other static methods or variables.
+Non static methods can access both static and non static members.
+
+-----------------------------------------------------------------------------------------------------
+package com.infosys.demo1;
+
+public class Item {
+private int itemId;
+private String itemName;
+private float itemPrice;
+public int getItemId() {
+	return itemId;
+}
+public void setItemId(int itemId) {
+	this.itemId = itemId;
+}
+public String getItemName() {
+	return itemName;
+}
+public void setItemName(String itemName) {
+	this.itemName = itemName;
+}
+public float getItemPrice() {
+	return itemPrice;
+}
+public void setItemPrice(float itemPrice) {
+	this.itemPrice = itemPrice;
+}
+
+}
+
+package com.infosys.demo1;
+
+public class ItemMain {
+
+	public static void main(String[] args) {
+	Item item1=new Item();
+	Item item2=new Item();
+	Item item3=new Item();
+	item1.setItemId(1);
+	item1.setItemName("Pen");
+	item1.setItemPrice(120.50f);
+	item1.setBrandName("XYZ");
+	item2.setItemId(2);
+	item2.setItemName("Pencil");
+	item2.setItemPrice(10);
+	item2.setBrandName("XYZ");
+	item3.setItemId(3);
+	
+	item3.setItemName("Sharpner");
+	item3.setItemPrice(5);
+	item3.setBrandName("XYZ");
+	System.out.println("The details");
+	System.out.println(item1.getItemId());
+	System.out.println(item1.getItemName());
+	System.out.println(item1.getItemPrice());
+	System.out.println(item1.getBrandName());
+	System.out.println(item2.getItemId());
+	System.out.println(item2.getItemName());
+	System.out.println(item2.getItemPrice());
+	System.out.println(item2.getBrandName());
+	System.out.println(item3.getItemId());
+	System.out.println(item3.getItemName());
+	System.out.println(item3.getItemPrice());
+    System.out.println(item3.getBrandName());	
+	
+	
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------------
+
+package com.infosys.demo2;
+
+public class Item {
+private int itemId;
+private String itemName;
+private float itemPrice;
+private static String brandName; // one copy of this variable which is 
+// shared by all the objects of a class
+
+
+public int getItemId() {
+	return itemId;
+}
+public static String getBrandName() {
+	return brandName;
+}
+public static void setBrandName(String brandName) {
+	Item.brandName = brandName;
+}
+public void setItemId(int itemId) {
+	this.itemId = itemId;
+}
+public String getItemName() {
+	return itemName;
+}
+public void setItemName(String itemName) {
+	this.itemName = itemName;
+}
+public float getItemPrice() {
+	return itemPrice;
+}
+public void setItemPrice(float itemPrice) {
+	this.itemPrice = itemPrice;
+}
+
+}
+
+
+package com.infosys.demo2;
+
+public class ItemMain {
+
+	public static void main(String[] args) {
+	Item item1=new Item();
+	Item item2=new Item();
+	Item item3=new Item();
+	item1.setItemId(1);
+	item1.setItemName("Pen");
+	item1.setItemPrice(120.50f);
+	//item1.setBrandName("XYZ"); // We need not write or access static members
+	// with object but we can access static members with class name
+	item2.setItemId(2);
+	item2.setItemName("Pencil");
+	item2.setItemPrice(10);
+	//item2.setBrandName("XYZ");
+	item3.setItemId(3);
+	
+	item3.setItemName("Sharpner");
+	item3.setItemPrice(5);
+	//item3.setBrandName("XYZ");
+	
+	Item.setBrandName("XYZ"); // static members can be accessed with the 
+	// class name as static are related to class rather than objects
+	
+	System.out.println("The details");
+	System.out.println(item1.getItemId());
+	System.out.println(item1.getItemName());
+	System.out.println(item1.getItemPrice());
+	//System.out.println(item1.getBrandName());
+	System.out.println(item2.getItemId());
+	System.out.println(item2.getItemName());
+	System.out.println(item2.getItemPrice());
+	//System.out.println(item2.getBrandName());
+	System.out.println(item3.getItemId());
+	System.out.println(item3.getItemName());
+	System.out.println(item3.getItemPrice());
+   // System.out.println(item3.getBrandName());	
+	
+	System.out.println(Item.getBrandName());
+
+	}
+
+}
+-------------------------------------------------------------------------------------------------------
+package com.infosys.demo3;
+
+public class Numbers {
+private int num;
+private static int static_num;
+public int getNum() {
+	return num;
+}
+public void setNum(int num) {
+	this.num = num;
+}
+public static int getStatic_num() {
+	return static_num;
+}
+public static void setStatic_num(int static_num) {
+	Numbers.static_num = static_num;
+}
+
+}
+
+package com.infosys.demo3;
+
+public class NumbersMain {
+
+	public static void main(String[] args) {
+		Numbers number1=new Numbers();
+		number1.setNum(1);
+		number1.setStatic_num(2);
+		Numbers number2=new Numbers();
+		number2.setNum(3);
+		number2.setStatic_num(4);
+		Numbers number3=new Numbers();
+		number3.setNum(5);
+		number3.setStatic_num(6);
+		System.out.println(number1.getNum()+"\t"+number1.getStatic_num());
+		System.out.println();
+		System.out.println(number2.getNum()+"\t"+number2.getStatic_num());
+		System.out.println();
+		System.out.println(number3.getNum()+"\t"+number3.getStatic_num());
+		System.out.println();
+		System.out.println(Numbers.getStatic_num()); // static methods should
+		// be called with the class name though they can be callled with the
+		// object but better to call static methods with the class name
+
+	}
+
+}
+------------------------------------------------------------------------------------------------------package com.infosys.demo4;
+
+public class Demo {
+private int i;
+	public static void main(String[] args) {
+		i=20;  // Compilation error because i is a non static variable
+		// and main in static so static cannot access non static member
+
+	}
+
+}
+
+-----------------------------------------------------------------------------------------------------
+package com.infosys.demo4;
+
+public class Demo2 {
+	private static int i;
+	public static void main(String[] args) {
+		i=20;  // we made i as static and now we can access
+
+	}
+
+}
+-----------------------------------------------------------------------------------------
+package com.infosys.demo4;
+
+public class Demo3 {
+	private  int i;
+	// to access non static members , first create an object of the class
+	// and then access
+	public static void main(String[] args) {
+		Demo3 demo=new Demo3();
+		demo.i=10; 
+		System.out.println(demo.i);
+	}
+
+}
+------------------------------------------------------------------------------------------------
+package com.infosys.demo4;
+
+public class Calculator {
+
+	
+	public int add(int a,int b)
+	{
+		return a+b;
+	}
+	
+	public static void main(String[] args) {
+		add(1,2);//Cannot make a static reference to the non-static
+		//method add(int, int) from the type Calculator
+
+	}
+
+}
+---------------------------------------------------------------------------
+package com.infosys.demo4;
+
+public class Calculator2 {
+
+	
+	public static int add(int a,int b)
+	{
+		return a+b;
+	}
+	
+	public static void main(String[] args) {
+		add(1,2);// A static method can call other static method
+
+	}
+
+}
+-----------------------------------------------------------------------------------
+
+package com.infosys.demo4;
+
+public class Calculator3 {
+
+	
+	public int add(int a,int b)
+	{
+		return a+b;
+	}
+	
+	public static void main(String[] args) {
+	   Calculator3 calc=new Calculator3();
+	  int sum=calc.add(1,2);// A static method can call other static method
+      System.out.println(sum);
+	}
+
+}
+----------------------------------------------------------------------------------------------------
+What is the purpose of declaring a member variable and method as static?
+A Many times we need a single copy of a variable and that variable is shared by all the objects.
+There we can think the usage of static variables.
+
+
+  public class Calculator {
+   // non static members
+    private int a;
+    private int b;
+    private int result;
+
+     // setters/getters
+   
+
+   // non static method
+    public int add(){
+     return a+b;
+    }
+
+  }
+
+  public class CalculatorMain {
+    public static void main(String args[]){
+    Calculator calc=new Calculator(); // the instance variables like a,b and result are coming to
+   // existence when we are creating object and similarly the add method can be called then only 
+   // when we create object. In the above case object is required otherwise we wont be able to 
+  // access a,b and result and also the method add.
+    calc.setA(1);
+    calc.setB(2);
+    System.out.println(calc.add());  //3
+   Calculator calc2=new Calculator();   
+   calc2.setA(3);
+   calc2.setB(4);
+   System.out.println(calc2.add());  //7
+   }
+ }
+
+If a class have member variable then it is meaningful to create multiple object because instance
+variables are giving separate identity to different object.
+-----------------------------------------------------------------------------------------------------
+  In this below example the class is not having any instance variables. So if the class is not
+having any instance variables then we need not require identifying the objects uniquely.
+  public class Calculator {
+ 
+
+   
+    public int add(int a,int b){
+     return a+b;
+    }
+
+  }
+  
+
+  public class CalculatorMain {
+    public static void main(String args[]){
+     Calculator calc1=new Calculator();
+     Calculator calc2=new Calculator();
+    // In the above calc1 and calc2 object are exactly same because we dont have instance variables
+   // which can store different set of values to identify the objects. Object creation is waste.
+   }
+ }
+----------------------------------------------------------------------------------------------------
+ public class Calculator {
+ 
+
+   
+    public static int add(int a,int b){
+     return a+b;
+    }
+
+  }
+  
+
+  public class CalculatorMain {
+    public static void main(String args[]){
+      System.out.println(Calculator.add(2,3));
+   }
+ }
+---------------------------------------------------------------------------------------------------
+Create multiple objects of Employee class and employee class will have employeeId which will be alphanumeric like E0001 E0002. Employee class further will have name and basic.
+
+
+
