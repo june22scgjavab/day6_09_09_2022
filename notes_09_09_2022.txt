@@ -421,6 +421,237 @@ having any instance variables then we need not require identifying the objects u
  }
 ---------------------------------------------------------------------------------------------------
 Create multiple objects of Employee class and employee class will have employeeId which will be alphanumeric like E0001 E0002. Employee class further will have name and basic.
+------------------------------------------------------------------------------------------------------package com.infosys.aggregation.demo1;
+
+public class Employee {
+private int employeeId;
+private String employeeName;
+private long mobileNumber;
+private String address;
 
 
 
+public Employee(int employeeId, String employeeName, long mobileNumber, String address) {
+	super();
+	this.employeeId = employeeId;
+	this.employeeName = employeeName;
+	this.mobileNumber = mobileNumber;
+	this.address = address;
+}
+public int getEmployeeId() {
+	return employeeId;
+}
+public void setEmployeeId(int employeeId) {
+	this.employeeId = employeeId;
+}
+public String getEmployeeName() {
+	return employeeName;
+}
+public void setEmployeeName(String employeeName) {
+	this.employeeName = employeeName;
+}
+public long getMobileNumber() {
+	return mobileNumber;
+}
+public void setMobileNumber(long mobileNumber) {
+	this.mobileNumber = mobileNumber;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+
+}
+
+
+package com.infosys.aggregation.demo1;
+
+public class Department {
+private int departmentId;
+private String departmentName;
+private Employee manager;  // HAS-A relationship
+public Department(int departmentId, String departmentName, Employee manager) {
+	super();
+	this.departmentId = departmentId;
+	this.departmentName = departmentName;
+	this.manager = manager;
+}
+public int getDepartmentId() {
+	return departmentId;
+}
+public void setDepartmentId(int departmentId) {
+	this.departmentId = departmentId;
+}
+public String getDepartmentName() {
+	return departmentName;
+}
+public void setDepartmentName(String departmentName) {
+	this.departmentName = departmentName;
+}
+public Employee getManager() {
+	return manager;
+}
+public void setManager(Employee manager) {
+	this.manager = manager;
+}
+
+}
+
+
+package com.infosys.aggregation.demo1;
+
+public class Main {
+
+	public static void main(String[] args) {
+	Employee employee=new Employee(1,"Subir",9823456781L,"A/122, Jawahar Nagar-Delhi");
+	Department dept=new Department(111,"Finance",employee);
+	System.out.println("The details");
+	System.out.println(dept.getDepartmentId());
+	System.out.println(dept.getDepartmentName());
+	System.out.println(dept.getManager());
+	employee=dept.getManager();
+	System.out.println(employee.getEmployeeId());
+	System.out.println(employee.getEmployeeName());
+	System.out.println(employee.getAddress());
+    System.out.println(employee.getMobileNumber());
+	}
+
+}
+----------------------------------------------------------------------------------------------------
+A Student is having a roll number, Name and name is further having firstName, middleName and lastName.
+and student is having marks.
+
+package com.infosys.aggregation.practice;
+
+public class Name{
+  private String firstName;
+  private String middleName;
+  private String lastName;
+  
+  //setters/getters/constructor parameterized
+public Name(String firstName, String middleName, String lastName) {
+	super();
+	this.firstName = firstName;
+	this.middleName = middleName;
+	this.lastName = lastName;
+}
+public String getFirstName() {
+	return firstName;
+}
+public void setFirstName(String firstName) {
+	this.firstName = firstName;
+}
+public String getMiddleName() {
+	return middleName;
+}
+public void setMiddleName(String middleName) {
+	this.middleName = middleName;
+}
+public String getLastName() {
+	return lastName;
+}
+public void setLastName(String lastName) {
+	this.lastName = lastName;
+}
+
+ 
+}
+package com.infosys.aggregation.practice;
+public class Student {
+  private int roll;
+  private Name name;
+  private int marks;
+  private Address address;
+//setters/getters/constructor
+
+public Student(int roll, Name name, int marks) {
+	super();
+	this.roll = roll;
+	this.name = name;
+	this.marks = marks;
+}
+
+public int getRoll() {
+	return roll;
+}
+
+public void setRoll(int roll) {
+	this.roll = roll;
+}
+
+public Name getName() {
+	return name;
+}
+
+public void setName(Name name) {
+	this.name = name;
+}
+
+public int getMarks() {
+	return marks;
+}
+
+public void setMarks(int marks) {
+	this.marks = marks;
+}
+
+ 
+}
+
+
+public class Address{
+private int hno;
+private String locality;
+private String city;
+private String state;
+
+// setters/getters/parameterized constructor
+
+}
+
+
+
+
+package com.infosys.aggregation.practice;
+public class StudentMain{
+	/*
+	 * ROLL: 1
+FIRSTNAME: Ram
+MIDDLENAME: Kumar
+LASTNAME: Verma
+MARKS: 90
+	 * 
+	 */
+   public static void main(String args[]){
+    Name name=new Name("Ram","Kumar","Verma");
+    Address address=new Address(1,"Jawahar Nagar","Kanpur","UP");
+    Student student=new Student(1,name,90,address);
+    System.out.println("ROLL: "+student.getRoll());
+    name=student.getName();
+    System.out.println("FIRSTNAME: "+name.getFirstName());
+    System.out.println("MIDDLENAME: "+name.getMiddleName());
+    System.out.println("LASTNAME: "+name.getLastName());
+    System.out.println("MARKS: "+student.getMarks());
+    address=student.getAddress();
+    System.out.println("HNO: "+address.getHno());
+    System.out.println("LOCALITY: "+address.getLocality());
+    System.out.println("CITY: "+address.getCity());
+    System.out.println("STATE: "+address.getState());
+   }
+}
+
+
+ROLL: 1
+FIRSTNAME: Ram
+MIDDLENAME: Kumar
+LASTNAME: Verma
+MARKS: 90
+HNO: 1
+LOCALITY: Jawahar Nagar
+CITY: Kanpur
+STATE: UP
+
+Add address as the object of Address class. Address class will have houseNumber,locality,city,state
+----------------------------------------------------------------------------------------------------------------------------
